@@ -1,0 +1,6 @@
+{
+  "name": "Celucosta",
+  "description": "Tienda de iPhone nuevo y reacondicionado con 12 meses de garantía en Sevilla-Nervión. Envío en 24 h y recogida en tienda.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --p-bg: #f7f7f7;
+    --p-surface: #ebebeb;
+    --p-ink: #0d2a1c;
+    --p-muted: #5f6b64;
+    --p-accent: #f6e016;
+    --p-accent-ink: #0d2a1c;
+    --p-action: #0d2a1c;
+    --p-action-ink: #f7f7f7;
+    --p-inv-bg: #0d2a1c;
+    --p-inv-surface: #1c3629;
+    --p-inv-ink: #f7f7f7;
+    --p-inv-muted: #97a39c;
+    --p-inv-accent: #f6e016;
+    --p-inv-action: #f6e016;
+    --p-inv-action-ink: #0d2a1c;
+    --font-display: "Instrument Serif", Georgia, serif;
+    --font-text: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--p-bg);
+    color: var(--p-ink);
+    font-family: var(--font-text);
+  }
+}
+
+.font-display {
+  font-family: "Instrument Serif", Georgia, serif;
+}
+
+.font-sans-custom {
+  font-family: "Instrument Sans", system-ui, -apple-system, sans-serif;
+}
+
+/* Nav active state */
+.nav__link--active {
+  position: relative;
+  font-weight: 600;
+}
+.nav__link--active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--p-accent);
+}
+
+/* Primary button styling with spring tactile physics */
+.btn--primary,
+.btn-celucosta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--p-action);
+  color: var(--p-action-ink);
+  font-family: var(--font-text);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+.btn--primary:hover,
+.btn-celucosta-primary:hover {
+  background-color: #17422d;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+.btn--primary:active,
+.btn-celucosta-primary:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.btn-celucosta-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--p-accent);
+  color: var(--p-accent-ink);
+  font-family: var(--font-text);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-celucosta-accent:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+
+.btn-celucosta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  color: var(--p-ink);
+  font-family: var(--font-text);
+  font-weight: 500;
+  border: 1px solid rgba(13, 42, 28, 0.25);
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-celucosta-secondary:hover {
+  background-color: rgba(13, 42, 28, 0.05);
+  border-color: rgba(13, 42, 28, 0.5);
+}
+
+/* Hero head entrance animation (GPU-accelerated transform & opacity only) */
+.hero__head > * {
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+.hero__head > *:nth-child(1) { animation-delay: 100ms; }
+.hero__head > *:nth-child(2) { animation-delay: 200ms; }
+
+@keyframes slideUpFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__head > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Scroll-driven animations without JS libraries */
+.section {
+  animation: revealOnScroll linear both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 30%;
+}
+
+@keyframes revealOnScroll {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Magnetic specification rows for iPhone models */
+.rows--spec {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rows--spec li {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.rows--spec li:hover {
+  transform: translateX(8px);
+  background-color: var(--p-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rows--spec li:hover {
+    transform: none !important;
+  }
+}
+
+
